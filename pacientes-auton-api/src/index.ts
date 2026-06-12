@@ -15,8 +15,8 @@ process.on("unhandledRejection", (reason) => {
 
 app.listen(
   {
-    host: env.isDev ? "0.0.0.0" : "127.0.0.1",
-    port: env.SERVER_PORT,
+    host: "0.0.0.0", // Cloud Run / containers exigem bind em 0.0.0.0
+    port: Number(process.env.PORT) || env.SERVER_PORT, // Cloud Run injeta PORT (default 8080)
   },
   (err, address) => {
     if (err) {
