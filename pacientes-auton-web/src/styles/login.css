@@ -1,0 +1,249 @@
+/* ═══════════════════════════════════════════════════════════════
+   AUTON Health — Paciente
+   Login (split-layout: hero à esquerda + form à direita)
+   Consome tokens de ./h2-tokens.css
+   ═══════════════════════════════════════════════════════════════ */
+
+.lg2-root {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--h2-bg);
+  font-family: var(--h2-font-sans);
+  overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  .lg2-root { grid-template-columns: 1fr; }
+}
+
+/* ─── Hero (left panel) ──────────────────────────────────────── */
+.lg2-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(71, 101, 235, 0.08) 0%, transparent 60%),
+    linear-gradient(145deg, #e8eef5 0%, #d7dee9 100%);
+}
+.lg2-hero__image {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.lg2-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(232,238,245,0.0) 60%, rgba(232,238,245,0.3) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.lg2-hero__card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 4rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 24px 48px rgba(30,58,95,0.10);
+}
+.lg2-hero__logo {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(30,58,95,0.2));
+}
+.lg2-hero__brand {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--h2-primary);
+  margin: 0;
+  font-family: var(--h2-font-display);
+}
+.lg2-hero__brand-tail { font-weight: 400; color: var(--h2-text-secondary); }
+
+@media (max-width: 1023px) {
+  .lg2-hero { display: none; }
+}
+
+/* ─── Form panel (right) ─────────────────────────────────────── */
+.lg2-form-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f9fc 0%, #e8f0f6 100%);
+  overflow-y: auto;
+}
+.lg2-form-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: h2-fade-slide-up 0.5s var(--h2-ease);
+}
+.lg2-form-card__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--h2-primary);
+  margin: 0;
+  text-align: center;
+  font-family: var(--h2-font-display);
+}
+.lg2-form-card__subtitle {
+  font-size: 0.875rem;
+  color: var(--h2-text-muted);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+/* Form fields */
+.lg2-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.lg2-field__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--h2-text);
+}
+.lg2-field__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.lg2-field__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 3rem 0 1rem;
+  border: 1px solid var(--h2-border);
+  border-radius: var(--h2-radius-pill);
+  background: var(--h2-surface);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--h2-text);
+  transition: border-color var(--h2-transition-fast), box-shadow var(--h2-transition-fast);
+}
+.lg2-field__input::placeholder { color: var(--h2-text-muted); }
+.lg2-field__input:hover { border-color: var(--h2-border-strong); }
+.lg2-field__input:focus {
+  outline: none;
+  border-color: var(--h2-action);
+  box-shadow: 0 0 0 3px rgba(71,101,235,0.12);
+}
+.lg2-field__icon {
+  position: absolute;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--h2-danger);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Meta row (lembrar + esqueci) */
+.lg2-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.8125rem;
+}
+.lg2-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  user-select: none;
+}
+.lg2-toggle__track {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--h2-border-strong);
+  position: relative;
+  transition: background var(--h2-transition-fast);
+}
+.lg2-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: left var(--h2-transition-fast);
+}
+.lg2-toggle input { display: none; }
+.lg2-toggle input:checked + .lg2-toggle__track { background: var(--h2-primary); }
+.lg2-toggle input:checked + .lg2-toggle__track .lg2-toggle__thumb { left: 18px; }
+.lg2-toggle__label { color: var(--h2-text); font-weight: 500; }
+.lg2-link {
+  color: var(--h2-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--h2-transition-fast);
+}
+.lg2-link:hover { color: var(--h2-action); text-decoration: underline; }
+
+/* Submit */
+.lg2-submit {
+  width: 100%;
+  height: 52px;
+  border: 0;
+  border-radius: var(--h2-radius-pill);
+  background: var(--h2-primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--h2-transition-fast), transform var(--h2-transition-fast), box-shadow var(--h2-transition-fast);
+  box-shadow: 0 6px 14px rgba(30,58,95,0.18);
+  margin-top: 0.5rem;
+}
+.lg2-submit:hover:not(:disabled) {
+  background: var(--h2-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(30,58,95,0.22);
+}
+.lg2-submit:active:not(:disabled) { transform: translateY(0); }
+.lg2-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* Error */
+.lg2-error {
+  background: rgba(239,68,68,0.10);
+  color: var(--h2-danger);
+  padding: 0.75rem 1rem;
+  border-radius: var(--h2-radius);
+  font-size: 0.8125rem;
+  text-align: center;
+}

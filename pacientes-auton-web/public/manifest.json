@@ -1,0 +1,67 @@
+{
+  "name": "AUTON Health — Paciente",
+  "short_name": "AUTON Health",
+  "description": "Acompanhe seus check-ins, métricas de saúde e hábitos do dia a dia.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1e3a5f",
+  "background_color": "#fafafa",
+  "categories": ["health", "lifestyle", "medical"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/auton-isologo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/auton-isologo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/auton-isologo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/auton-isologo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Fazer Check-in",
+      "short_name": "Check-in",
+      "url": "/checkin-diarios",
+      "description": "Registrar check-in diário de saúde"
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "url": "/dashboard",
+      "description": "Ver visão geral das suas métricas"
+    },
+    {
+      "name": "Perfil",
+      "short_name": "Perfil",
+      "url": "/perfil",
+      "description": "Gerenciar dados da conta"
+    }
+  ],
+  "prefer_related_applications": false
+}

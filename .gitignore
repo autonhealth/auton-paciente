@@ -1,0 +1,29 @@
+# ── Dependências ──
+node_modules/
+
+# ── Segredos / ambiente (NUNCA commitar: service_role key, etc.) ──
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+# mantém os exemplos
+!.env.sample
+
+# ── Builds ──
+build/
+dist/
+
+# ── Logs / OS ──
+*.log
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+
+# ── Tooling local (Claude Code / MCP) ──
+.claude/
+.mcp.json
+
+# ── Misc ──
+coverage/
+.vercel/
